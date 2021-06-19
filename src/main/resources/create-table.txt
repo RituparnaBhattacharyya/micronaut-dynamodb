@@ -1,0 +1,6 @@
+aws dynamodb create-table --table-name CAR
+    --attribute-definitions  AttributeName=BRAND,AttributeType=S AttributeName=MODELNO,AttributeType=S AttributeName=MODELTYPE,AttributeType=S
+    --key-schema AttributeName=BRAND,KeyType=HASH AttributeName=MODELNO,KeyType=RANGE
+    --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5
+    --local-secondary-indexes "IndexName=BRANDMODELTYPEINDEX,KeySchema=[{AttributeName=BRAND,KeyType=HASH},{AttributeName=MODELTYPE,KeyType=RANGE}],Projection={ProjectionType=ALL}"
+    --region us-east-1 --endpoint-url http://localhost:8000
